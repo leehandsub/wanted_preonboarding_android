@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.wanted_pre_onboarding_android.R
-import com.example.wanted_pre_onboarding_android.ui.ViewModelFactory
+import com.example.wanted_pre_onboarding_android.ui.common.ViewModelFactory
 import kotlinx.coroutines.launch
 
 class CategoryFragment : Fragment() {

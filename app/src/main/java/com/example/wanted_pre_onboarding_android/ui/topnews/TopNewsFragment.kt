@@ -5,14 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.wanted_pre_onboarding_android.R
+import androidx.fragment.app.viewModels
+import com.example.wanted_pre_onboarding_android.databinding.FragmentTopnewsBinding
+import com.example.wanted_pre_onboarding_android.ui.common.ViewModelFactory
 
 class TopNewsFragment : Fragment() {
+
+    private val viewModel: TopNewsViewModel by viewModels { ViewModelFactory(requireContext()) }
+    private lateinit var binding: FragmentTopnewsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_topnews, container, false)
+        binding = FragmentTopnewsBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setArticleAdapter()
+    }
+
+    private fun setArticleAdapter(){
+        val articleAdapter = TopNewsAdapter()
+        binding.rvTopNews.adapter=articleAdapter
+        viewModel.items.observe(viewLifecycleOwner){
+            articleAdapter.submitList(it)
+        }
     }
 }
