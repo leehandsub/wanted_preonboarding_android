@@ -1,7 +1,7 @@
 package com.example.wanted_pre_onboarding_android.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.wanted_pre_onboarding_android.R
@@ -14,7 +14,8 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigationMain)
 
-        val navController = supportFragmentManager.findFragmentById(R.id.containerMain)?.findNavController()
+        val navController =
+            supportFragmentManager.findFragmentById(R.id.containerMain)?.findNavController()
         navController?.let {
             bottomNavigationView.setupWithNavController(it)
         }
