@@ -28,13 +28,14 @@ class CategoryAdapter() :
                         )
                     )
                 }
+                binding.executePendingBindings()
             }
         }
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): CategoryAdapter.CategoryViewHolder {
         binding =
             ItemCatgoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)

@@ -9,12 +9,17 @@ import com.example.wanted_pre_onboarding_android.repository.category.CategoryNew
 import com.example.wanted_pre_onboarding_android.repository.topnews.TopNewsRemoteDataSource
 import com.example.wanted_pre_onboarding_android.repository.topnews.TopNewsRepository
 import com.example.wanted_pre_onboarding_android.ui.category.CategoryNewsViewModel
+import com.example.wanted_pre_onboarding_android.ui.newsdetail.NewsDetailViewModel
+import com.example.wanted_pre_onboarding_android.ui.saved.SavedViewModel
 import com.example.wanted_pre_onboarding_android.ui.topnews.TopNewsViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
+            modelClass.isAssignableFrom(CommonViewModel::class.java) -> {
+                CommonViewModel() as T
+            }
             modelClass.isAssignableFrom(CategoryNewsViewModel::class.java) -> {
                 val repository =
                     CategoryNewsRepository(CategoryNewsRemoteDataSource(ServiceLocator.provideApiClient()))
@@ -24,6 +29,12 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
                 val repository =
                     TopNewsRepository(TopNewsRemoteDataSource(ServiceLocator.provideApiClient()))
                 TopNewsViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(NewsDetailViewModel::class.java) -> {
+                NewsDetailViewModel(ServiceLocator.provideSavedRepository(context)) as T
+            }
+            modelClass.isAssignableFrom(SavedViewModel::class.java) -> {
+                SavedViewModel(ServiceLocator.provideSavedRepository(context)) as T
             }
             else -> {
                 throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")

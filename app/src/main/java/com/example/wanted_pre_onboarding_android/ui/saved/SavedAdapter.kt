@@ -1,4 +1,4 @@
-package com.example.wanted_pre_onboarding_android.ui.topnews
+package com.example.wanted_pre_onboarding_android.ui.saved
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,12 +9,11 @@ import com.example.wanted_pre_onboarding_android.databinding.ItemNewsBinding
 import com.example.wanted_pre_onboarding_android.model.Article
 import com.example.wanted_pre_onboarding_android.ui.common.CommonViewModel
 
-class TopNewsAdapter(private val viewModel: CommonViewModel) :
-    ListAdapter<Article, TopNewsAdapter.TopNewsViewHolder>(TopNewsDiffCallback()) {
-
+class SavedAdapter(private val viewModel: CommonViewModel) :
+    ListAdapter<Article, SavedAdapter.SavedViewHolder>(SavedDiffCallback()) {
     private lateinit var binding: ItemNewsBinding
 
-    inner class TopNewsViewHolder(private val binding: ItemNewsBinding) :
+    inner class SavedViewHolder(private val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article) {
             binding.viewModel = viewModel
@@ -23,18 +22,22 @@ class TopNewsAdapter(private val viewModel: CommonViewModel) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopNewsViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): SavedAdapter.SavedViewHolder {
         binding =
             ItemNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TopNewsViewHolder(binding)
+        return SavedViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: TopNewsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SavedAdapter.SavedViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
+
 }
 
-class TopNewsDiffCallback : DiffUtil.ItemCallback<Article>() {
+class SavedDiffCallback : DiffUtil.ItemCallback<Article>() {
     override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
         return oldItem.urlToImage == newItem.urlToImage
     }

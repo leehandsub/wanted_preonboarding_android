@@ -20,4 +20,5 @@ class CategoryNewsViewModel(private val categoryRepository: CategoryNewsReposito
             }
         }
     }
+
 }

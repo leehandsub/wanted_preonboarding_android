@@ -1,91 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarNewsDetail"
-        android:layout_width="match_parent"
-        tools:title="NewsApp"
-        app:navigationIcon="@drawable/ic_gnb_back"
-        app:titleTextColor="@color/white"
-        android:layout_height="wrap_content"
-        app:layout_scrollFlags="scroll|enterAlways" />
-    </com.google.android.material.appbar.AppBarLayout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.wanted_pre_onboarding_android.ui.newsdetail.NewsDetailViewModel" />
+        <variable
+            name="article"
+            type="com.example.wanted_pre_onboarding_android.model.Article" />
+    </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
 
-            <TextView
-                android:id="@+id/tvDetailTitle"
-                android:layout_width="0dp"
-                tools:text="Photo proves US star is a cheat code as world record obliterated - Fox Sports"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarNewsDetail"
+                android:layout_width="match_parent"
+                android:title="@{article.title}"
+                tools:title="NewsApp"
+                app:navigationIcon="@drawable/ic_gnb_back"
+                app:titleTextColor="@color/white"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_scrollFlags="scroll|enterAlways" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-            <ImageButton
-                android:id="@+id/savedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_star_off"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvDetailTitle"
-                app:layout_constraintTop_toTopOf="parent" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <TextView
-                android:id="@+id/tvDeatilAuthor"
-                android:layout_width="0dp"
-                tools:text="Pedro Berrill"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDetailTitle" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvDeatilTime"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                tools:text="3 days ago"
-                app:layout_constraintStart_toEndOf="@id/tvDeatilAuthor"
-                app:layout_constraintTop_toBottomOf="@id/tvDetailTitle" />
-            <ImageView
-                android:id="@+id/ivDeatilImage"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDeatilAuthor"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
-            <TextView
-                android:id="@+id/tvDetailContent"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                tools:text="American Sydney McLaughlin has shattered her own 400m hurdles world record at the world athletics championships, leaving fans lost for words.
+                <TextView
+                    android:id="@+id/tvDetailTitle"
+                    android:layout_width="0dp"
+                    android:text="@{article.title}"
+                    tools:text="Photo proves US star is a cheat code as world record obliterated - Fox Sports"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/savedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_star_off"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:onClick="@{()->viewModel.addSaved(article)}"
+                    app:layout_constraintStart_toEndOf="@id/tvDetailTitle"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvDeatilAuthor"
+                    android:layout_width="0dp"
+                    android:text="@{article.author}"
+                    tools:text="Pedro Berrill"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDetailTitle" />
+
+                <TextView
+                    android:id="@+id/tvDeatilTime"
+                    android:layout_width="0dp"
+                    android:text="@{article.publishedAt}"
+                    android:layout_height="wrap_content"
+                    tools:text="3 days ago"
+                    app:layout_constraintStart_toEndOf="@id/tvDeatilAuthor"
+                    app:layout_constraintTop_toBottomOf="@id/tvDetailTitle" />
+
+                <ImageView
+                    android:id="@+id/ivDeatilImage"
+                    android:layout_width="0dp"
+                    imageUrl="@{article.urlToImage}"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDeatilAuthor"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvDetailContent"
+                    android:layout_width="0dp"
+                    android:text="@{article.content}"
+                    android:layout_height="wrap_content"
+                    tools:text="American Sydney McLaughlin has shattered her own 400m hurdles world record at the world athletics championships, leaving fans lost for words.
 
 McLaughlin, the reigning Olympic champion, was the red-hot favourite and absolutely smashed her own world record by nearly a second in the final on Saturday in Eugene, Oregon.
 
 The 22-year-old was streaks ahead of the field well before the turn and left her world-class rivals in her wake to cross the line in 50.68sec.
 
 The incredible time chopped nearly a full second off her previous mark of 51.41, set at last year’s Tokyo Olympics."
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ivDeatilImage"
-                />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivDeatilImage" />
 
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

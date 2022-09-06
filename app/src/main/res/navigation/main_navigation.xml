@@ -15,7 +15,11 @@
     <fragment
         android:id="@+id/navigation_saved"
         android:name="com.example.wanted_pre_onboarding_android.ui.saved.SavedFragment"
-        android:label="SavedFragment" />
+        android:label="SavedFragment" >
+        <action
+            android:id="@+id/action_navigation_saved_to_newsDetailFragment3"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_top_news"
         android:name="com.example.wanted_pre_onboarding_android.ui.topnews.TopNewsFragment"
