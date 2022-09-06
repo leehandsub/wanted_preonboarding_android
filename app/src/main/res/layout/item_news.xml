@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/newsLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             tools:text="Pedro Berrill"/>
         <TextView
-            android:id="@+id/tvNEwsTime"
+            android:id="@+id/tvNewsTime"
             android:layout_width="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"

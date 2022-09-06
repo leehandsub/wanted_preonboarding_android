@@ -15,5 +15,13 @@
     <fragment
         android:id="@+id/navigation_top_news"
         android:name="com.example.wanted_pre_onboarding_android.ui.topnews.TopNewsFragment"
-        android:label="TopNewsFragment" />
+        android:label="TopNewsFragment">
+        <action
+            android:id="@+id/action_navigation_top_news_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.example.wanted_pre_onboarding_android.ui.newsdetail.NewsDetailFragment"
+        android:label="NewsDetailFragment" />
 </navigation>

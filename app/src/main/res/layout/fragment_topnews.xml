@@ -10,7 +10,6 @@
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarProductDetail"
             android:layout_width="match_parent"
             app:title="NewsApp"
             app:titleTextColor="@color/white"

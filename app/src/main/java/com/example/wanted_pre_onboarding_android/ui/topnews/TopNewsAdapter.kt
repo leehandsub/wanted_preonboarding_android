@@ -2,12 +2,15 @@ package com.example.wanted_pre_onboarding_android.ui.topnews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.example.wanted_pre_onboarding_android.R
 import com.example.wanted_pre_onboarding_android.databinding.ItemNewsBinding
 import com.example.wanted_pre_onboarding_android.model.Article
+import com.example.wanted_pre_onboarding_android.ui.common.loadImageGlide
 
 class TopNewsAdapter() :
     ListAdapter<Article, TopNewsAdapter.TopNewsViewHolder>(TopNewsDiffCallback()) {
@@ -16,13 +19,21 @@ class TopNewsAdapter() :
     inner class TopNewsViewHolder(private val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article) {
-            Glide.with(itemView)
-                .load(article.urlToImage)
-                .into(binding.ivNewsImage)
-            binding.tvNEwsTime.text = article.publishedAt
+            loadImageGlide(binding.ivNewsImage, article.urlToImage)
+            binding.tvNewsTime.text = article.publishedAt
             binding.tvNewsAuthor.text = article.author
             binding.tvNewsTitle.text = article.title
-
+            binding.newsLayout.setOnClickListener {
+                it.findNavController().navigate(
+                    R.id.action_navigation_top_news_to_newsDetailFragment, bundleOf(
+                        "title" to article.title,
+                        "author" to article.author,
+                        "urlToImage" to article.urlToImage,
+                        "content" to article.content,
+                        "publishedAt" to article.publishedAt,
+                    )
+                )
+            }
         }
     }
 

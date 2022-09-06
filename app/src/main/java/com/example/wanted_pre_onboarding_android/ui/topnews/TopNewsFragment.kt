@@ -18,19 +18,22 @@ class TopNewsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTopnewsBinding.inflate(inflater,container,false)
+        binding = FragmentTopnewsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setArticleAdapter()
+        /*viewModel.openNewsEvent.observe(viewLifecycleOwner,EventObserver{
+            openTopNewsDetail(it)
+        })*/
     }
 
-    private fun setArticleAdapter(){
+    private fun setArticleAdapter() {
         val articleAdapter = TopNewsAdapter()
-        binding.rvTopNews.adapter=articleAdapter
-        viewModel.items.observe(viewLifecycleOwner){
+        binding.rvTopNews.adapter = articleAdapter
+        viewModel.items.observe(viewLifecycleOwner) {
             articleAdapter.submitList(it)
         }
     }
