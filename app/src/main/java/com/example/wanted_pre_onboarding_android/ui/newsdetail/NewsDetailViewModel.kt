@@ -14,6 +14,9 @@ class NewsDetailViewModel(private val savedRepository: SavedRepository) : ViewMo
     private val _addSavedEvent = MutableLiveData<Event<Unit>>()
     val addSavedEvent: LiveData<Event<Unit>> = _addSavedEvent
 
+    private val _search = MutableLiveData<List<Article>>()
+    val search: LiveData<List<Article>> = _search
+
     fun addSaved(article: Article) {
         viewModelScope.launch {
             savedRepository.addFavorite(article)
@@ -25,6 +28,12 @@ class NewsDetailViewModel(private val savedRepository: SavedRepository) : ViewMo
         viewModelScope.launch {
             savedRepository.deleteFavorite(article)
             _addSavedEvent.value = Event(Unit)
+        }
+    }
+
+    fun searchSaved(searchQuery: String) {
+        viewModelScope.launch {
+            _search.value = savedRepository.searchFavorite(searchQuery)
         }
     }
 }

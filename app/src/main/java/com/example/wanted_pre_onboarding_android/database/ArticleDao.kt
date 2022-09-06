@@ -12,6 +12,9 @@ interface ArticleDao {
     @Query("SELECT * FROM article")
     suspend fun favoriteLoad(): List<Article>
 
+    @Query("SELECT * FROM article WHERE url_to_image LIKE :searchQuery")
+    suspend fun searchDatabase(searchQuery : String) : List<Article>
+
     @Delete
     suspend fun delete(article: Article)
 }

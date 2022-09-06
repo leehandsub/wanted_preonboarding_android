@@ -17,6 +17,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:elevation="0dp">
@@ -43,7 +44,7 @@
 
                 <TextView
                     android:id="@+id/tvDetailTitle"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:text="@{article.title}"
                     tools:text="Photo proves US star is a cheat code as world record obliterated - Fox Sports"
                     android:layout_height="wrap_content"
@@ -54,11 +55,10 @@
                     android:id="@+id/savedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_star_off"
+                    android:background="@drawable/selecotr_star"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDetailTitle"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:onClick="@{()->viewModel.addSaved(article)}"
-                    app:layout_constraintStart_toEndOf="@id/tvDetailTitle"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@id/tvDetailTitle"/>
 
                 <TextView
                     android:id="@+id/tvDeatilAuthor"

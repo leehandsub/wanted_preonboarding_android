@@ -16,4 +16,8 @@ class SavedLocalDataSource(private val dao: ArticleDao) : SavedDataSource {
     override suspend fun deleteFavorite(article: Article) {
         dao.delete(article)
     }
+
+    override suspend fun searchFavorite(searchQuery: String): List<Article> {
+        return dao.searchDatabase(searchQuery)
+    }
 }

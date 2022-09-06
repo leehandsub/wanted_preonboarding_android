@@ -38,8 +38,7 @@ class TopNewsFragment : Fragment() {
                     "author" to it.author,
                     "urlToImage" to it.urlToImage,
                     "content" to it.content,
-                    "publishedAt" to it.publishedAt,
-                    "like" to it.like
+                    "publishedAt" to it.publishedAt
                 )
             )
         })

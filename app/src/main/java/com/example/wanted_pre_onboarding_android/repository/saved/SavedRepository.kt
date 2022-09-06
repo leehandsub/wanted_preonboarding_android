@@ -27,4 +27,9 @@ class SavedRepository(
             localDataSource.deleteFavorite(article)
         }
     }
+    suspend fun searchFavorite(searchQuery : String) : List<Article>{
+        return withContext(ioDispatcher) {
+            localDataSource.searchFavorite(searchQuery)
+        }
+    }
 }

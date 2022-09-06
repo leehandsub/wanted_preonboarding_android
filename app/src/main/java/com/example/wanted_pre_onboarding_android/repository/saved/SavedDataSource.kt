@@ -9,4 +9,6 @@ interface SavedDataSource {
     suspend fun getFavorite(): List<Article>
 
     suspend fun deleteFavorite(article: Article)
+
+    suspend fun searchFavorite(searchQuery : String) : List<Article>
 }

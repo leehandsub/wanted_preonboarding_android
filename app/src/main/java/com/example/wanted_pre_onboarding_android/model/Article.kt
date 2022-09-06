@@ -9,13 +9,12 @@ import androidx.room.PrimaryKey
 )
 
 data class Article(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    //@PrimaryKey(autoGenerate = true) val id: Int,
     val author: String,
     val title: String,
     //val description: String,
     //val url: String,
-    @ColumnInfo(name = "url_to_image") val urlToImage: String,
+    @PrimaryKey @ColumnInfo(name = "url_to_image") val urlToImage: String,
     @ColumnInfo(name = "published_at") val publishedAt: String,
-    val content: String,
-    val like: Boolean = false,
+    val content: String
 )
