@@ -24,13 +24,13 @@ class TopNewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setArticleAdapter()
+        setTopNewsAdapter()
         /*viewModel.openNewsEvent.observe(viewLifecycleOwner,EventObserver{
             openTopNewsDetail(it)
         })*/
     }
 
-    private fun setArticleAdapter() {
+    private fun setTopNewsAdapter() {
         val articleAdapter = TopNewsAdapter()
         binding.rvTopNews.adapter = articleAdapter
         viewModel.items.observe(viewLifecycleOwner) {

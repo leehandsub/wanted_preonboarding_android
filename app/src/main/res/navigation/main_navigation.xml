@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/navigation_category"
         android:name="com.example.wanted_pre_onboarding_android.ui.category.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:label="CategoryFragment">
+        <action
+            android:id="@+id/action_navigation_category_to_categoryNewsFragment"
+            app:destination="@id/categoryNewsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_saved"
         android:name="com.example.wanted_pre_onboarding_android.ui.saved.SavedFragment"
@@ -24,4 +28,12 @@
         android:id="@+id/newsDetailFragment"
         android:name="com.example.wanted_pre_onboarding_android.ui.newsdetail.NewsDetailFragment"
         android:label="NewsDetailFragment" />
+    <fragment
+        android:id="@+id/categoryNewsFragment"
+        android:name="com.example.wanted_pre_onboarding_android.ui.category.CategoryNewsFragment"
+        android:label="CategoryNewsFragment">
+        <action
+            android:id="@+id/action_categoryNewsFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
 </navigation>
