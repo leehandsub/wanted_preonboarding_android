@@ -10,7 +10,7 @@ import com.example.wanted_pre_onboarding_android.repository.saved.SavedRepositor
 object ServiceLocator {
     private var apiClient: ApiClient? = null
     private var database: AppDatabase? = null
-    private var savedRepository : SavedRepository? = null
+    private var savedRepository: SavedRepository? = null
 
     fun provideApiClient(): ApiClient {
         return apiClient ?: kotlin.run {
@@ -19,6 +19,7 @@ object ServiceLocator {
             }
         }
     }
+
     private fun provideDatabase(applicationContext: Context): AppDatabase {
         return database ?: kotlin.run {
             Room.databaseBuilder(

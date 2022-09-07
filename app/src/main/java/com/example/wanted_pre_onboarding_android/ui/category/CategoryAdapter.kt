@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wanted_pre_onboarding_android.R
-import com.example.wanted_pre_onboarding_android.databinding.ItemCatgoryBinding
+import com.example.wanted_pre_onboarding_android.databinding.ItemCategoryBinding
 import com.example.wanted_pre_onboarding_android.model.Category
 
 class CategoryAdapter() :
     ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(CategoryDiffCallback()) {
-    private lateinit var binding: ItemCatgoryBinding
+    private lateinit var binding: ItemCategoryBinding
 
-    inner class CategoryViewHolder(var binding: ItemCatgoryBinding) :
+    inner class CategoryViewHolder(var binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
             binding.apply {
@@ -38,7 +38,7 @@ class CategoryAdapter() :
         viewType: Int,
     ): CategoryAdapter.CategoryViewHolder {
         binding =
-            ItemCatgoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CategoryViewHolder(binding)
     }
 

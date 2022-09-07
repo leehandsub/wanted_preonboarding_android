@@ -1,7 +1,6 @@
 package com.example.wanted_pre_onboarding_android.ui.saved
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +50,6 @@ class SavedFragment : Fragment() {
         binding.rvSavedNews.adapter = savedAdapter
         viewModel.saves.observe(viewLifecycleOwner) {
             savedAdapter.submitList(it)
-            Log.e("savedAdapter", it.toString())//예외상황 설정
         }
     }
 }

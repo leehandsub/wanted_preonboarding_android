@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">wanted-pre-onboarding-Android</string>
+    <string name="category_description">Choose a category to start reading</string>
+    <string name="news_detail_like_image_description">좋아요버튼이미지</string>
+    <string name="news_image_description">뉴스 이미지</string>
+    <string name="news_detail_image_description">상세페이지 이미지</string>
+    <string name="category_image_description">카테고리 이미지</string>
 </resources>

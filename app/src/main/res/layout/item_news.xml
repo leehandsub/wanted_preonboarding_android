@@ -16,7 +16,11 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/newsLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/news_shpae">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,42 +29,58 @@
 
             <ImageView
                 android:id="@+id/ivNewsImage"
-                android:layout_width="0dp"
-                android:scaleType="centerCrop"
-                android:layout_height="130dp"
                 imageUrl="@{article.urlToImage}"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:contentDescription="@string/news_image_description"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="뉴스 이미지" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvNewsTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:text="@{article.title}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@{article.title}"
                 app:layout_constraintTop_toBottomOf="@id/ivNewsImage"
                 tools:text="10 of the Cheapest and Healthiest Ways\nto Feed a Group, According to Reddit..." />
 
             <TextView
                 android:id="@+id/tvNewsAuthor"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
                 android:text="@{article.author}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
-                android:layout_height="wrap_content"
                 tools:text="Pedro Berrill" />
 
             <TextView
                 android:id="@+id/tvNewsTime"
-                android:text="@{article.publishedAt}"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:text="@{article.publishedAt}"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
-                android:layout_height="wrap_content"
                 tools:text="3 hours ago" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

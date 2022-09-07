@@ -1,20 +1,16 @@
 package com.example.wanted_pre_onboarding_android.ui.newsdetail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.wanted_pre_onboarding_android.R
 import com.example.wanted_pre_onboarding_android.databinding.FragmentNewsDetailBinding
 import com.example.wanted_pre_onboarding_android.model.Article
 import com.example.wanted_pre_onboarding_android.ui.common.EventObserver
 import com.example.wanted_pre_onboarding_android.ui.common.ViewModelFactory
-import kotlinx.coroutines.launch
 
 class NewsDetailFragment : Fragment() {
     private lateinit var binding: FragmentNewsDetailBinding
@@ -45,20 +41,17 @@ class NewsDetailFragment : Fragment() {
         binding.article = detailArticle
 
         viewModel.searchSaved(detailArticle.urlToImage)
-        viewModel.search.observe(viewLifecycleOwner){
-            Log.e("urlToImage", it.toString())//예외상황 설정
+        viewModel.search.observe(viewLifecycleOwner) {
             binding.savedButton.isSelected = it.isNotEmpty()
         }
-        Log.e("detailArticle", detailArticle.toString())//예외상황 설정
         binding.savedButton.setOnClickListener {
-            viewModel.search.observe(viewLifecycleOwner){ list->
-                if(list.isEmpty()){
+            viewModel.search.observe(viewLifecycleOwner) { list ->
+                if (list.isEmpty()) {
                     viewModel.addSaved(detailArticle)
-                    it.isSelected=true
-                }
-                else {
+                    it.isSelected = true
+                } else {
                     viewModel.deleteSaved(detailArticle)
-                    it.isSelected=false
+                    it.isSelected = false
                 }
             }
         }
