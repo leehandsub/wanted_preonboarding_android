@@ -45,22 +45,20 @@ class NewsDetailFragment : Fragment() {
         binding.article = detailArticle
 
         viewModel.searchSaved(detailArticle.urlToImage)
-        viewModel.search.observe(viewLifecycleOwner){ list->
-            if(list.size==0){
-                binding.savedButton.setImageResource(R.drawable.ic_star_off)
-            }
-            else {
-                binding.savedButton.setImageResource(R.drawable.ic_star_on)
-            }
+        viewModel.search.observe(viewLifecycleOwner){
+            Log.e("urlToImage", it.toString())//예외상황 설정
+            binding.savedButton.isSelected = it.isNotEmpty()
         }
         Log.e("detailArticle", detailArticle.toString())//예외상황 설정
         binding.savedButton.setOnClickListener {
             viewModel.search.observe(viewLifecycleOwner){ list->
-                if(list.size==0){
+                if(list.isEmpty()){
                     viewModel.addSaved(detailArticle)
+                    it.isSelected=true
                 }
                 else {
                     viewModel.deleteSaved(detailArticle)
+                    it.isSelected=false
                 }
             }
         }

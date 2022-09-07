@@ -36,4 +36,5 @@ class NewsDetailViewModel(private val savedRepository: SavedRepository) : ViewMo
             _search.value = savedRepository.searchFavorite(searchQuery)
         }
     }
+
 }
